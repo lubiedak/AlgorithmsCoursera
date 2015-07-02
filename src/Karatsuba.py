@@ -40,7 +40,6 @@ class KaratsubaAlg:
         digits = list(str(number))
         a = ""
         b = ""
-        
         i = 0
         for digit in digits:
             if(i<self.n):
