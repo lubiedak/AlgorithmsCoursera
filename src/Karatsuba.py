@@ -14,6 +14,9 @@ class KaratsubaAlg:
         print("n: "+ str(self.n))
         
         (a,b,c,d) = self.seperate(num1, num2)
+        return self.doKaratsuba(a,b,c,d)
+    
+    def doKaratsuba(self, a, b, c, d):
         print("ac*10^n + (ad + bc)*10^n/2 + bd")
         print("ac: "+str(a*c))
         print("ad: "+str(a*d))
@@ -22,7 +25,7 @@ class KaratsubaAlg:
         result = a*c*10**(2*self.n2) + (a*d + b*c)*10**(self.n2) + b*d
         print("Result: " + str(result))
         return result
-        
+    
     def seperate(self, num1, num2):    
         (a,b) = self.divide(num1)
         (c,d) = self.divide(num2)
