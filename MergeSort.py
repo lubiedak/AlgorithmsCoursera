@@ -3,6 +3,7 @@ Created on 2 Jul 2015
 
 @author: biedakl
 '''
+from random import randint
 
 class MergeSorter:
     
@@ -36,13 +37,14 @@ class MergeSorter:
                     c.extend(a[i:])
                     break
                 
-                 
+        print(c)         
         return c
 
 
 
-a = [21, 43, 12, 13, 44, 9, 67, 77, 14]
-
+a = []
+for i in range(1000):
+    a.append(randint(0, 1000))
 
 merger = MergeSorter()
 x = merger.sort(a)
