@@ -4,8 +4,18 @@ Created on 2 Jul 2015
 @author: biedakl
 '''
 
-
 class MergeSorter:
+    
+    def sort(self, x):
+        size = len(x)
+        if(size>1):
+            a = x[0:size/2]
+            b = x[size/2:]
+            a = self.sort(a)
+            b = self.sort(b)
+            x = self.merge(a,b)
+            return x
+        return x
     
     def merge(self, a,b):
         i=0
@@ -14,7 +24,6 @@ class MergeSorter:
         for k in range(len(a)+len(b)):
             if(a[i]<b[j]):
                 c.append(a[i])
-                print("i: " + str(i))
                 i+=1
                 if(i == len(a)):
                     c.extend(b[j:])
@@ -22,7 +31,6 @@ class MergeSorter:
                 
             else:
                 c.append(b[j])
-                print("j: " + str(j))
                 j+=1
                 if(j == len(b)):
                     c.extend(a[i:])
@@ -33,9 +41,9 @@ class MergeSorter:
 
 
 
-a = [21, 54, 67, 77]
-b = [1, 44, 45, 54, 66]
+a = [21, 43, 12, 13, 44, 9, 67, 77, 14]
+
 
 merger = MergeSorter()
-x = merger.merge(a, b)
+x = merger.sort(a)
 print (x)
