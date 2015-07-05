@@ -51,9 +51,13 @@ for i in range(1000):
     a.append(randint(0, 1000))
 
 a = [1,3,5, 7,2,4,6,1,8,0]
+b = []
+f = open("IntegerArray.txt",'r')
+for line in f:
+    b.append(int(line))
 
 merger = MergeSorter()
-x = merger.sort(a)
+x = merger.sort(b)
 print (a)
-print (x)
+#print (x)
 print (merger.it)
