@@ -6,9 +6,9 @@ Created on 2 Jul 2015
 from random import randint
 
 class MergeSorter:
-    
+
     def __init__(self):
-        self.it = 0
+        self.counter = 0
     
     def sort(self, x):
         size = len(x)
@@ -31,33 +31,50 @@ class MergeSorter:
                 i+=1
                 if(i == len(a)):
                     c.extend(b[j:])
+                    self.counter+=len(b[i:])
                     break
                 
             else:
-                self.it+=len(a)-i
+                self.counter+=len(a)-i
                 c.append(b[j])
                 j+=1
                 if(j == len(b)):
                     c.extend(a[i:])
+                    self.counter+=len(a[i:])
                     break
                 
                  
         return c
+    
+def brute(a):
+    c = 0
+    for i in range(len(a)):
+        for j in range(len(a)-i):
+            if(a[i]>a[i+j]):
+                c+=1
+        if(i%100==0):
+            print((i+0.0)/len(a))
+    return c
+
+def fillRandom(n):
+    a = []
+    for i in range(n):
+        a.append(randint(0, n))
+
+def readArrayFromFile():
+    a = []
+    f = open("/home/biedakl/pythonApps/AlgorithmsCoursera/IntegerArray.txt", 'r')
+    for line in f:
+        a.append(int(line))
+    return a
 
 
 
-a = []
-for i in range(1000):
-    a.append(randint(0, 1000))
-
-a = [1,3,5, 7,2,4,6,1,8,0]
-b = []
-f = open("IntegerArray.txt",'r')
-for line in f:
-    b.append(int(line))
-
+#a = fillRandom(1000)
+a = [76, 80, 451, 546, 555, 3,  684, 732, 743, 4, 5]
+b = readArrayFromFile()
 merger = MergeSorter()
 x = merger.sort(b)
-print (a)
-#print (x)
-print (merger.it)
+#print (brute(b))
+print (x)
+print (merger.counter)
